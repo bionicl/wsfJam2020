@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Audio;
 
 public class RythmManager : MonoBehaviour
 {
@@ -20,8 +21,8 @@ public class RythmManager : MonoBehaviour
     }
 
     private void Start() {
-        
         Debug.Log("Repeat time: " + repeatTime);
+        AudioManager.instance.Play("Music loop");
     }
 
     public float Register(RythmObject obj) {
