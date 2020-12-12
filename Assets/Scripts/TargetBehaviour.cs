@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum TargetType
+{
+    Funky,
+    Rat
+}
 public class TargetBehaviour : MonoBehaviour
 {
     private Rigidbody2D Rigidbody2D;
     private CapsuleCollider2D CapsuleCollider2D;
+
+    public TargetType type;
     void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -30,9 +38,20 @@ public class TargetBehaviour : MonoBehaviour
     {
         if (other.CompareTag("vinyl projectile"))
         {
-            Debug.Log("Vinyl projectile hit target!");//to delete later
-            //call method to add Funk
-            Destroy(other);
+            GameManager gameManager = FindObjectOfType<GameManager>();
+
+            if (type == TargetType.Funky)
+            {
+                gameManager.HitFunky();
+            }
+            else
+            {
+                gameManager.HitRat();
+            }
+            if (other.transform.parent != null)
+            {
+                Destroy(other.transform.parent.gameObject);
+            }
         }
     }
 }
