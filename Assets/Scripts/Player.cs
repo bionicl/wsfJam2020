@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Animator animator;
     public ProjectileShooter discShooter;
     Camera cam;
 
@@ -59,7 +60,12 @@ public class Player : MonoBehaviour
         }
 
         CheckShooting();
+        HandleAnimations();
+    }
 
+    void HandleAnimations()
+    {
+        animator.SetBool( "jumping", !IsGrounded() );
     }
 
     private bool IsGrounded()
