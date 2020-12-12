@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
         //Debug.Log(raycastHit2d.collider.gameObject.tag);
         if (raycastHit2d.collider != null)
         {
-            if (raycastHit2d.collider.gameObject.tag == "Platforms")
+            if (raycastHit2d.collider.gameObject.CompareTag( "Platforms" ))
             {
                 return raycastHit2d.collider;
             } 
@@ -85,9 +85,18 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Platforms" && IsGrounded() && Input.GetKeyDown(KeyCode.DownArrow))
+        if (other.gameObject.CompareTag( "Platforms" ) && IsGrounded() && Input.GetKeyDown(KeyCode.DownArrow))
         {
             other.gameObject.GetComponent<Collider2D>().enabled = false;
+        }
+    }
+
+    void OnTriggerEnter2D( Collider2D other )
+    {
+        // Pick up vinyls
+        if( other.CompareTag( "vinyl pickup" ) && GameManager.instance.AddVinyl() )
+        {
+            Destroy( other.gameObject );
         }
     }
 
