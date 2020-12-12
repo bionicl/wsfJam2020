@@ -13,12 +13,14 @@ public class GameManager : MonoBehaviour
     public float startLevel = .5f;
     public float funkyHitValue = .15f;
     public float funkyRatValue = .15f;
-    public float distanceMultiplayer = 10;
-    public float pointsMultiplayer = 5;
+    public float distanceMultiplier = 10;
+    public float pointsMultiplier = 5;
     public float[] multiplayers = { 0.8f, 0.6f, 0 };
 
     [Tooltip("Per second")]
     public float levelDecreaseSpeed = .02f;
+
+    public bool gameOver = false;
 
     // Internal
     bool _gameStarted = false;
@@ -29,7 +31,6 @@ public class GameManager : MonoBehaviour
     float _level;
     public float level { get { return _level; } }
     float points = 0;
-    int currentMultiplayer = 0;
 
     private void Awake() {
         instance = this;
@@ -37,7 +38,13 @@ public class GameManager : MonoBehaviour
     }
     private void Start() {
         ui = UiManager.instance;
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        StartCoroutine(StartMusicWithDelay());
+    }
+
+    IEnumerator StartMusicWithDelay() {
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.Play("Music loop");
     }
 
     private void Update() {
@@ -45,17 +52,22 @@ public class GameManager : MonoBehaviour
             StartGame();
         }
 
-        if (_gameStarted) {
+        if (_gameStarted && !gameOver) {
             _level -= levelDecreaseSpeed * Time.deltaTime;
             _level = Mathf.Clamp01(_level);
 
-            int distance = Mathf.FloorToInt(Time.timeSinceLevelLoad * distanceMultiplayer);
+            int distance = Mathf.FloorToInt(Time.timeSinceLevelLoad * distanceMultiplier);
             ui.distanceText.text = distance.ToString();
 
-            float newPoints = Time.deltaTime * Multiplayer * pointsMultiplayer;
+            float newPoints = Time.deltaTime * Multiplayer * pointsMultiplier;
             points += newPoints;
             ui.pointsText.text = Mathf.FloorToInt(points).ToString();
         }
+
+        if (level <= 0) {
+            GameOver();
+        }
+
         if (Input.GetKeyDown(KeyCode.V)) {
             AddVinyl();
         }
@@ -101,11 +113,14 @@ public class GameManager : MonoBehaviour
 
     // Game control
     public void StartGame() {
-        AudioManager.instance.Play("Music loop");
         _gameStartTime = Time.timeSinceLevelLoad;
-        Time.timeScale = 1;
         _gameStarted = true;
-        //ui.startGameObject.SetActive(false);
+        ui.startGameObject.GetComponent<Animator>().enabled = true;
+    }
+    public void GameOver() {
+        gameOver = true;
+        ui.gameOver.gameObject.SetActive(true);
+        ui.gameoverScoreText.text = Mathf.FloorToInt(points).ToString();
     }
 
     // DEBUG
