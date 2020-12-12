@@ -36,8 +36,6 @@ public class GeneratorPieceData : MonoBehaviour
         float[] probs = new float[probabilities.Length];
         probabilities.CopyTo(probs, 0);
 
-        float before = probs[3];
-
         foreach (var item in obstaclesIndexes)
         {
             probs[item] *= difficultyMultiplier;
@@ -51,9 +49,6 @@ public class GeneratorPieceData : MonoBehaviour
         {
             probs[j] /= sum;
         }
-
-        float after = probs[3];
-        Debug.Log(after - before);
 
         int i;
         float p = UnityEngine.Random.Range(0.0f, 1.0f);
