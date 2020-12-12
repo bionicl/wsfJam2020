@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask platformsLayerMask;
     private Rigidbody2D _rigidBody2D;
     private CapsuleCollider2D _capsuleCollider2D;
+    private SpriteRenderer _spriteRenderer;
+    [SerializeField]
+    public bool invulnerability = false;
 
 
 
@@ -19,16 +22,17 @@ public class Player : MonoBehaviour
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
         _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         _capsuleCollider2D.size = new Vector2(1f, 2f);
 
         if (_rigidBody2D == null)
         {
-            Debug.LogError("The RigidBody2D is NULL for Player 1.");
+            Debug.LogError("The RigidBody2D is NULL for Player.");
         }
         if (_capsuleCollider2D == null)
         {
-            Debug.LogError("The _capsuleCollider2D is NULL for Player 1.");
+            Debug.LogError("The _capsuleCollider2D is NULL for Player.");
         }
 
         cam = Camera.main;
@@ -112,6 +116,34 @@ public class Player : MonoBehaviour
             Vector2 shootDir = (Input.mousePosition - cam.WorldToScreenPoint(transform.position)).normalized;
             discShooter.TryShootOnce(shootDir);
         }
+    }
+
+    public void PlayerInvulnerability()
+    {
+        invulnerability = true; //switch off box collider2D
+        //start coroutine to switch on and off character graphic
+        StartCoroutine(PlayerOffAndOn());
+
+    }
+
+    IEnumerator PlayerOffAndOn()
+    {
+        Color colorFull = Color.white;
+        Color colorHalf = Color.white;
+        colorHalf.a = 0.5f;
+        _spriteRenderer.color = colorHalf;
+        yield return new WaitForSeconds(0.3f);
+        _spriteRenderer.color = colorFull;
+        yield return new WaitForSeconds(0.3f);
+        _spriteRenderer.color = colorHalf;
+        yield return new WaitForSeconds(0.3f);
+        _spriteRenderer.color = colorFull;
+        yield return new WaitForSeconds(0.3f);
+        _spriteRenderer.color = colorHalf;
+        yield return new WaitForSeconds(0.3f);
+        _spriteRenderer.color = colorFull;
+        yield return new WaitForSeconds(0.3f);
+        invulnerability = false;
     }
 
 }
