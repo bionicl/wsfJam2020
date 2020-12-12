@@ -8,6 +8,7 @@ namespace PlayerScripts
         public Animator animator;
         public ProjectileShooter discShooter;
         public GroundCheck groundCheck;
+        public GameObject slidingSmokeEffect;
         Camera cam;
         
         Rigidbody2D _rigidBody2D;
@@ -68,12 +69,14 @@ namespace PlayerScripts
                 _capsuleCollider2D.size = new Vector2(1f, 1f);
                 _capsuleCollider2D.offset = new Vector2(0, -0.5f);
                 animator.SetBool( "down", true );
+                slidingSmokeEffect.SetActive( true );
             }
             else
             {
                 _capsuleCollider2D.size = new Vector2(1f, 2f);
                 _capsuleCollider2D.offset = Vector2.zero;
                 animator.SetBool( "down", false );
+                slidingSmokeEffect.SetActive( false );
             }
 
             CheckShooting();
