@@ -4844,6 +4844,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 923862e1013505a469ef980ed253e14b, type: 3}
+--- !u!114 &950973433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8765331695712017618, guid: 926714c16cd42ea48b0b3787565f95f3, type: 3}
+  m_PrefabInstance: {fileID: 6023800561353747759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e725647473c52ef4fa514652bc219d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &955392357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7801521633816695785, guid: 923862e1013505a469ef980ed253e14b, type: 3}
@@ -10521,10 +10532,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1852967846235899596, guid: 926714c16cd42ea48b0b3787565f95f3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6023800560266179024, guid: 926714c16cd42ea48b0b3787565f95f3, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -10573,5 +10580,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8240515988492991166, guid: 926714c16cd42ea48b0b3787565f95f3, type: 3}
+      propertyPath: discShooter
+      value: 
+      objectReference: {fileID: 950973433}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 926714c16cd42ea48b0b3787565f95f3, type: 3}
