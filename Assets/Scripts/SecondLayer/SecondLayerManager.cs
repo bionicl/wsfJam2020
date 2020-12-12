@@ -22,7 +22,7 @@ namespace SecondLayer
             for( int i = 0; i < nrOfBuildings; i++ )
             {
                 Vector3 pos = transform.position + Vector3.right * (spawnedWidth + cutoff);
-                Building newBuilding = Instantiate( buildingPrefab, pos, Quaternion.identity ).GetComponent<Building>();
+                Building newBuilding = Instantiate( buildingPrefab, pos, Quaternion.identity, transform ).GetComponent<Building>();
                 newBuilding.SetRandHeight();
                 buildings.Add( newBuilding );
                 lastBuilding = newBuilding;
