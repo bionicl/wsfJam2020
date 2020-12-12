@@ -9,6 +9,7 @@ public class UiManager : MonoBehaviour
 
     [Header("UI elements")]
     public Slider slider;
+    public Animator levelAnimator;
 
     [Header("Spawn areas")]
     public Transform vinylSpawnArea;
@@ -25,6 +26,10 @@ public class UiManager : MonoBehaviour
         instance = this;
     }
 
+    private void Update() {
+        slider.value = GameManager.instance.level;
+    }
+
     public void AddVinyl() {
         GameObject tempGo = Instantiate(vinylPrefab, vinylSpawnArea);
         vinyls.Push(tempGo);
@@ -32,5 +37,9 @@ public class UiManager : MonoBehaviour
 
     public void RemoveVinyl() {
         Destroy(vinyls.Pop());
+    }
+
+    public void UpdateUi() {
+        
     }
 }
