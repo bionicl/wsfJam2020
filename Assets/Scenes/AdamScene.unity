@@ -797,6 +797,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2771646918003920761, guid: e10d5725be75e427a92e69cbbd5b2ea8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192264053243180041, guid: e10d5725be75e427a92e69cbbd5b2ea8, type: 3}
+      propertyPath: m_Color.a
+      value: 0.6156863
+      objectReference: {fileID: 0}
     - target: {fileID: 3788273725951536992, guid: e10d5725be75e427a92e69cbbd5b2ea8, type: 3}
       propertyPath: m_Name
       value: Backgrounds
@@ -807,15 +815,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3788273725951536995, guid: e10d5725be75e427a92e69cbbd5b2ea8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2570782
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3788273725951536995, guid: e10d5725be75e427a92e69cbbd5b2ea8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.659341
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3788273725951536995, guid: e10d5725be75e427a92e69cbbd5b2ea8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.96395266
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3788273725951536995, guid: e10d5725be75e427a92e69cbbd5b2ea8, type: 3}
       propertyPath: m_LocalRotation.w
