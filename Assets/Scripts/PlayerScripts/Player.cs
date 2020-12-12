@@ -45,7 +45,7 @@ namespace PlayerScripts
             var platform = GetStandingOnPlatform();
             
             // Jumping
-            if( IsGrounded() && Input.GetKey( KeyCode.Space ) && timeSinceJump > jumpDelay )
+            if( IsGrounded() && Input.GetKey( KeyCode.Space ) && timeSinceJump > jumpDelay && _rigidBody2D.velocity.y <= 0 )
             {
                 _rigidBody2D.AddForce( Vector2.up * jumpForce, ForceMode2D.Impulse );
                 timeSinceJump = 0;
