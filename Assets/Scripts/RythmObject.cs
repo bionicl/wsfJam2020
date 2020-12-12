@@ -5,7 +5,7 @@ using UnityEngine;
 public class RythmObject : MonoBehaviour
 {
     [Header("Objects")]
-    [Tooltip("Game will try to get transform from the current object if not set");
+    [Tooltip("Game will try to get transform from the current object if not set")]
     public Transform objectTransform;
 
     [Header("Settings")]
