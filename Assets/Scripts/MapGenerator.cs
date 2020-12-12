@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
@@ -20,17 +21,26 @@ public class MapGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject nextPiece = prefabs[Random.Range(0, prefabs.Count)];
+        float p = Random.Range(0.0f, 1.0f);
+        
         if(generatedPieces.Count == 0)
         {
+            GameObject nextPiece = prefabs[0];
             generatedPieces.Add(Instantiate(nextPiece,transform.position,Quaternion.identity,transform));
         }
         else
         {
+
             GameObject lastPiece = generatedPieces[generatedPieces.Count - 1];
-            while(lastPiece.transform.position.x < transform.position.x)
+            while (lastPiece.transform.position.x < transform.position.x)
             {
                 lastPiece = generatedPieces[generatedPieces.Count - 1];
+                PieceType nextPieceType = GeneratorPieceData.GetNextPieceType(lastPiece.GetComponent<GeneratorPieceData>().pieceType);
+
+                List<GameObject> possibleNextPieces = prefabs.Where((e) => e.GetComponent<GeneratorPieceData>().pieceType == nextPieceType).ToList();
+
+                GameObject nextPiece = possibleNextPieces[Random.Range(0,possibleNextPieces.Count)];
+
                 Vector2 lastPieceEndPlatformOffset = lastPiece.GetComponent<PolygonCollider2D>().points[lastPiece.GetComponent<GeneratorPieceData>().colliderPlatformEndPointIndex];
                 Vector2 nextPieceStartPlatformOffset = nextPiece.GetComponent<PolygonCollider2D>().points[nextPiece.GetComponent<GeneratorPieceData>().colliderPlatformStartPointIndex];
 
