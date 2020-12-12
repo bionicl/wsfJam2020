@@ -6,17 +6,24 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     public static UiManager instance;
+    Animator sliderAnimator;
 
     [Header("UI elements")]
     public Slider slider;
     public RythmObject sliderObject;
     public GameObject startGameObject;
+    public Text distanceText;
+    public Text pointsText;
 
     [Header("Spawn areas")]
     public Transform vinylSpawnArea;
 
     [Header("Prefabs")]
     public GameObject vinylPrefab;
+
+    [Header("Settings")]
+    public Color badColor;
+    public Color goodColor;
 
 
     // Internal
@@ -25,10 +32,13 @@ public class UiManager : MonoBehaviour
 
     private void Awake() {
         instance = this;
+        sliderAnimator = slider.GetComponent<Animator>();
     }
 
     private void Update() {
         slider.value = GameManager.instance.level;
+        slider.targetGraphic.color = Color.Lerp(badColor, goodColor, slider.value);
+        sliderAnimator.SetFloat("SliderValue", GameManager.instance.level);
     }
 
     public void AddVinyl() {
@@ -38,9 +48,5 @@ public class UiManager : MonoBehaviour
 
     public void RemoveVinyl() {
         Destroy(vinyls.Pop());
-    }
-
-    public void UpdateUi() {
-        
     }
 }

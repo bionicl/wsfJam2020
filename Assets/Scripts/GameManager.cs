@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public float startLevel = .5f;
     public float funkyHitValue = .15f;
     public float funkyRatValue = .15f;
+    public float distanceMultiplayer = 10;
+    public float pointsMultiplayer = 5;
+    public float[] multiplayers = { 0.8f, 0.6f, 0 };
 
     [Tooltip("Per second")]
     public float levelDecreaseSpeed = .02f;
@@ -25,7 +28,8 @@ public class GameManager : MonoBehaviour
     int _vinylNum;
     float _level;
     public float level { get { return _level; } }
-
+    float points = 0;
+    int currentMultiplayer = 0;
 
     private void Awake() {
         instance = this;
@@ -44,8 +48,24 @@ public class GameManager : MonoBehaviour
         if (_gameStarted) {
             _level -= levelDecreaseSpeed * Time.deltaTime;
             _level = Mathf.Clamp01(_level);
+
+            int distance = Mathf.FloorToInt(Time.timeSinceLevelLoad * distanceMultiplayer);
+            ui.distanceText.text = distance.ToString();
+
+            float newPoints = Time.deltaTime * Multiplayer * pointsMultiplayer;
+            points += newPoints;
+            ui.pointsText.text = Mathf.FloorToInt(points).ToString();
         }
-        ui.UpdateUi();
+    }
+    int Multiplayer {
+        get {
+            if (level > multiplayers[0])
+                return 3;
+            else if (level > multiplayers[1])
+                return 2;
+            else
+                return 1;
+        }
     }
 
     // Vinyls
