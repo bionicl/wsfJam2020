@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
         _level -= levelDecreaseSpeed * Time.deltaTime;
         _level = Mathf.Clamp01(_level);
         ui.UpdateUi();
+
+        if (Input.GetKeyDown(KeyCode.V)) {
+            AddVinyl();
+        }
     }
 
     // Vinyls
@@ -48,7 +52,7 @@ public class GameManager : MonoBehaviour
             return false;
         ui.RemoveVinyl();
         _vinylNum--;
-        return false;
+        return true;
     }
 
     // Hidding enemies
