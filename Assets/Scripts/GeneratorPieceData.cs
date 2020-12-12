@@ -65,4 +65,5 @@ public class GeneratorPieceData : MonoBehaviour
     public PieceType pieceType;
     public int colliderPlatformStartPointIndex = 0;
     public int colliderPlatformEndPointIndex = 3;
+    public GameObject vinylPickUpSpawnPosition;
 }

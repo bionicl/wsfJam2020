@@ -11,8 +11,11 @@ public class MapGenerator : MonoBehaviour
     public float yTopBound = 10;
     public float yBottomBound = -10;
     public int maxFailCount = 1000;
+    public float timeToNextVinyl = 5;
+    public GameObject vinylPickup;
 
     private List<GameObject> generatedPieces = new List<GameObject>();
+    private List<GameObject> generatedPickups = new List<GameObject>();
 
 
     // Start is called before the first frame update
@@ -24,6 +27,9 @@ public class MapGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeToNextVinyl -= Time.deltaTime;
+        
+
         float p = Random.Range(0.0f, 1.0f);
 
         GameObject lastPiece = generatedPieces[generatedPieces.Count - 1];
@@ -59,6 +65,11 @@ public class MapGenerator : MonoBehaviour
             if (nextPosition.y > yBottomBound && nextPosition.y < yTopBound || failCount > maxFailCount)
             {
                 generatedPieces.Add(Instantiate(nextPiece, nextPosition, Quaternion.identity, transform));
+                if (timeToNextVinyl < 0 || Random.Range(0f, 1f) < 0.1f)
+                {
+                    timeToNextVinyl = 5;
+                    generatedPickups.Add(Instantiate(vinylPickup, nextPiece.GetComponent<GeneratorPieceData>().vinylPickUpSpawnPosition.transform.position + nextPosition, Quaternion.identity, transform));
+                }
                 failCount = 0;
             }
             else
@@ -66,13 +77,21 @@ public class MapGenerator : MonoBehaviour
                 failCount++;
             }
         }
-        Scroll();
+        if (timeToNextVinyl < 0)
+        {
+            timeToNextVinyl = 5;
+        }
         DestroyOutsideBound();
+        Scroll();
     }
 
     void Scroll()
     {
         foreach (GameObject item in generatedPieces)
+        {
+            item.transform.Translate(Vector3.left * speed * Time.deltaTime);
+        }
+        foreach (GameObject item in generatedPickups)
         {
             item.transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
@@ -90,6 +109,26 @@ public class MapGenerator : MonoBehaviour
             else
             {
                 i++;
+            }
+        }
+        for (int i = 0; i < generatedPickups.Count;)
+        {
+            GameObject gameObject = generatedPickups[i];
+            if(gameObject != null)
+            {
+                if (gameObject.transform.position.x < transform.position.x + xBoundOffset)
+                {
+                    generatedPickups.Remove(gameObject);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            else
+            {
+                generatedPickups.RemoveAt(i);
             }
         }
     }

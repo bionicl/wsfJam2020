@@ -586,6 +586,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5153021226727569104, guid: 3f64f571b17e79a40afcd98594d2639b, type: 3}
+      propertyPath: vinylPickup
+      value: 
+      objectReference: {fileID: 6893069618932223252, guid: 9fbdc41a03c70d84b94b9e5a8c6cdccf, type: 3}
     - target: {fileID: 5153021226727569134, guid: 3f64f571b17e79a40afcd98594d2639b, type: 3}
       propertyPath: m_Name
       value: MapGenerator
