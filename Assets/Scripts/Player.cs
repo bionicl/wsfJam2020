@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
     void HandleAnimations()
     {
         animator.SetBool( "jumping", !IsGrounded() );
+        animator.SetBool( "velocity_up", _rigidBody2D.velocity.y > 0 );
     }
 
     private bool IsGrounded()
