@@ -35,6 +35,8 @@ public class MapGenerator : MonoBehaviour
         {
 
             GameObject lastPiece = generatedPieces[generatedPieces.Count - 1];
+
+            int failCount = 0;
             while (lastPiece.transform.position.x < transform.position.x)
             {
                 lastPiece = generatedPieces[generatedPieces.Count - 1];
@@ -50,9 +52,14 @@ public class MapGenerator : MonoBehaviour
                 Vector2 offsetsDiff = lastPieceEndPlatformOffset * lastPiece.transform.localScale - nextPieceStartPlatformOffset * nextPiece.transform.localScale;
 
                 Vector3 nextPosition = lastPiece.transform.position + new Vector3(offsetsDiff.x, offsetsDiff.y);
-                if(nextPosition.y > yBottomBound && nextPosition.y < yTopBound)
+                if(nextPosition.y > yBottomBound && nextPosition.y < yTopBound || failCount > 100)
                 {
                     generatedPieces.Add(Instantiate(nextPiece, nextPosition, Quaternion.identity, transform));
+                    failCount = 0;
+                }
+                else
+                {
+                    failCount++;
                 }
             }
 
