@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4677291014644047621}
   - component: {fileID: 4677291014644047618}
   - component: {fileID: 4677291014644047619}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StartPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,3 +128,4 @@ MonoBehaviour:
   pieceType: 5
   colliderPlatformStartPointIndex: 0
   colliderPlatformEndPointIndex: 3
+  vinylPickUpSpawnPosition: {fileID: 0}
