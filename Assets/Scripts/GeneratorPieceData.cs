@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum PieceType
 {
+    Platform,
     SlopeUp,
     SlopeDown,
-    Platform,
 }
 
 
@@ -17,12 +17,12 @@ public class GeneratorPieceData : MonoBehaviour
     {
         switch (pieceType)
         {
-            case PieceType.SlopeUp:
-                return new float[] { 0, 0.7f, 0.72f };
-            case PieceType.SlopeDown:
-                return new float[] { 0, 0.02f, 0.72f };
             case PieceType.Platform:
-                return new float[] { 0, 0.02f, 0.04f };
+                return new float[] { 0.96f, 0.02f, 0.02f };
+            case PieceType.SlopeUp:
+                return new float[] { 0.28f, 0.70f, 0.02f };
+            case PieceType.SlopeDown:
+                return new float[] { 0.28f, 0.02f, 0.70f };
             default:
                 return new float[] { 0, 0, 0 };
         }
@@ -34,9 +34,12 @@ public class GeneratorPieceData : MonoBehaviour
         float[] probabilities = GetProbabilitesForNextPiece(lastPieceType);
         int i;
         float p = Random.Range(0.0f, 1.0f);
-        for (i = probabilities.Length - 1; i > -1; i--)
+        float sum = 0;
+        for (i = 0; i < probabilities.Length; i++)
         {
-            if (probabilities[i] < p) break;
+            sum += probabilities[i];
+            if(p < sum)
+                break;
         }
         return (PieceType)i;
     }

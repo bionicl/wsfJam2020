@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30b4b2d06dda9b45b305673de1cc88a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceType: 0
+  pieceType: 1
   colliderPlatformStartPointIndex: 0
   colliderPlatformEndPointIndex: 3
