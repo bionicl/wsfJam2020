@@ -10,6 +10,7 @@ public class UiManager : MonoBehaviour
     [Header("UI elements")]
     public Slider slider;
     public RythmObject sliderObject;
+    public GameObject startGameObject;
 
     [Header("Spawn areas")]
     public Transform vinylSpawnArea;

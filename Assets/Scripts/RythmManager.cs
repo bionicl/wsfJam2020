@@ -6,6 +6,7 @@ using Audio;
 public class RythmManager : MonoBehaviour
 {
     public static RythmManager instance;
+    GameManager gm;
 
     [Header("Settings")]
     public int bpm = 120;
@@ -22,8 +23,7 @@ public class RythmManager : MonoBehaviour
     }
 
     private void Start() {
-        Debug.Log("Repeat time: " + repeatTime);
-        AudioManager.instance.Play("Music loop");
+        gm = GameManager.instance;
     }
 
     public float Register(RythmObject obj) {
@@ -32,8 +32,11 @@ public class RythmManager : MonoBehaviour
         return repeatTime;
     }
 
+
     private void Update() {
-        if ((Time.timeSinceLevelLoad + delay) - (repeatTime * bitNo) >= repeatTime) {
+        if (gm.gameStartTime == -1)
+            return;
+        if ((Time.timeSinceLevelLoad - delay) - (repeatTime * bitNo) >= repeatTime) {
             bitNo++;
             foreach (var item in objects) {
                 item.Hit(bitNo % 4 == 0);

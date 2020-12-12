@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,9 +18,14 @@ public class GameManager : MonoBehaviour
     public float levelDecreaseSpeed = .02f;
 
     // Internal
+    bool _gameStarted = false;
+    float _gameStartTime = -1;
+    public float gameStartTime { get { return _gameStartTime; } }
+
     int _vinylNum;
     float _level;
     public float level { get { return _level; } }
+
 
     private void Awake() {
         instance = this;
@@ -27,11 +33,18 @@ public class GameManager : MonoBehaviour
     }
     private void Start() {
         ui = UiManager.instance;
+        Time.timeScale = 0;
     }
 
     private void Update() {
-        _level -= levelDecreaseSpeed * Time.deltaTime;
-        _level = Mathf.Clamp01(_level);
+        if (!_gameStarted && Input.GetKeyDown(KeyCode.Space)) {
+            StartGame();
+        }
+
+        if (_gameStarted) {
+            _level -= levelDecreaseSpeed * Time.deltaTime;
+            _level = Mathf.Clamp01(_level);
+        }
         ui.UpdateUi();
     }
 
@@ -61,6 +74,15 @@ public class GameManager : MonoBehaviour
         _level -= funkyRatValue;
         _level = Mathf.Clamp01(_level);
         ui.sliderObject.Hit(true);
+    }
+
+    // Game control
+    public void StartGame() {
+        AudioManager.instance.Play("Music loop");
+        _gameStartTime = Time.timeSinceLevelLoad;
+        Time.timeScale = 1;
+        _gameStarted = true;
+        //ui.startGameObject.SetActive(false);
     }
 
     // DEBUG
