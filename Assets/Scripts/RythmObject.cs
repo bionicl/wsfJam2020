@@ -38,7 +38,7 @@ public class RythmObject : MonoBehaviour
     }
 
     public void Hit(bool main) {
-        if (!objectTransform)
+        if (!objectTransform || !gameObject.activeInHierarchy)
             return;
         float strength = normalStrength;
         if (main && reactsToMainBeat)
