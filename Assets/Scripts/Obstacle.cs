@@ -23,7 +23,7 @@ public class Obstacle : MonoBehaviour
 
         if (other.CompareTag("Player") && player.invulnerability == false)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             player.PlayerInvulnerability();
             gameManager.HitRat();
         }

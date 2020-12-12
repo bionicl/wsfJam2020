@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8765331695712017618}
   - component: {fileID: 2171269274917991510}
   - component: {fileID: 1115109136962007403}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4139870989159523526}
   - component: {fileID: 3721147250903581881}
   - component: {fileID: 2911240694710625890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Animating sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 6670436961190490993}
   - component: {fileID: 8768304423685609071}
   - component: {fileID: 1239301388810664207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grounded check
   m_TagString: Player
   m_Icon: {fileID: 0}

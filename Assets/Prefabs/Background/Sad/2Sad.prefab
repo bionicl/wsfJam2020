@@ -180,8 +180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPosY: 0
   maxPosY: 0
-  minDistance: 10.2
-  maxDistance: 10.2
+  minDistance: 16.3
+  maxDistance: 16.3
   windows: []
   chanceOfRobot: 0.1
   chanceOfFunky: 0.6

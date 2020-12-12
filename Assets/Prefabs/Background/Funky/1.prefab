@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -30
-  m_Sprite: {fileID: 21300000, guid: 86b1b58a960934bd584c09c67b3170a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59f371ba4e6c14615a71413aca048c32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPosY: 0
   maxPosY: 0
-  minDistance: 20
-  maxDistance: 20
+  minDistance: 32.6
+  maxDistance: 32.6
   windows: []
   chanceOfRobot: 0.1
   chanceOfFunky: 0.6
