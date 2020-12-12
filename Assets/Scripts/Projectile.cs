@@ -14,6 +14,9 @@ public class Projectile : MonoBehaviour
     public void Init( Vector2 shootDirection )
     {
         direction = shootDirection;
+
+        float angle = Mathf.Atan2( shootDirection.y, shootDirection.x ) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler( 0, 0, angle );
     }
     
     void Start()
