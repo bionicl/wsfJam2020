@@ -223,8 +223,8 @@ MonoBehaviour:
   startLevel: 0.5
   funkyHitValue: 0.15
   funkyRatValue: 0.15
-  distanceMultiplayer: 10
-  pointsMultiplayer: 5
+  distanceMultiplier: 10
+  pointsMultiplier: 5
   multiplayers:
   - 0.8
   - 0.6
@@ -294,6 +294,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3372322593060738669, guid: 2718024f675454f2b99f5d235999a49b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3372322593060738669, guid: 2718024f675454f2b99f5d235999a49b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4561506511263728325, guid: 2718024f675454f2b99f5d235999a49b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -454,6 +462,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8654420645513884953, guid: 2718024f675454f2b99f5d235999a49b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654420645513884953, guid: 2718024f675454f2b99f5d235999a49b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2718024f675454f2b99f5d235999a49b, type: 3}
 --- !u!1001 &1023452460
@@ -513,6 +529,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
+--- !u!1 &1300451322 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4462855353714363220, guid: 2718024f675454f2b99f5d235999a49b, type: 3}
+  m_PrefabInstance: {fileID: 737353440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1300451328
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300451322}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1456652937
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5153021226727569104, guid: 3f64f571b17e79a40afcd98594d2639b, type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5153021226727569134, guid: 3f64f571b17e79a40afcd98594d2639b, type: 3}
       propertyPath: m_Name
       value: MapGenerator
@@ -600,7 +637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5153021226727569135, guid: 3f64f571b17e79a40afcd98594d2639b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3473995
+      value: -3.2
       objectReference: {fileID: 0}
     - target: {fileID: 5153021226727569135, guid: 3f64f571b17e79a40afcd98594d2639b, type: 3}
       propertyPath: m_LocalPosition.z
