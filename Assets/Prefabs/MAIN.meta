@@ -1,9 +1,13 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: d80b49c273789a945aabed02b8daebc0
 =======
 guid: e6dba3010a37b45c59e5013e29a5eb5c
 >>>>>>> main
+=======
+guid: 4e66ef7c3bc8dc247a8276cff881bf62
+>>>>>>> map_generator
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
