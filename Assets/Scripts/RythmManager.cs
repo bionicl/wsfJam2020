@@ -34,8 +34,6 @@ public class RythmManager : MonoBehaviour
 
 
     private void Update() {
-        if (gm.gameStartTime == -1)
-            return;
         if ((Time.timeSinceLevelLoad - delay) - (repeatTime * bitNo) >= repeatTime) {
             bitNo++;
             foreach (var item in objects) {

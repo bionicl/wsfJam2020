@@ -36,7 +36,14 @@ public class GameManager : MonoBehaviour
     }
     private void Start() {
         ui = UiManager.instance;
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        StartCoroutine(StartMusicWithDelay());
+    }
+
+    IEnumerator StartMusicWithDelay() {
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.Play("Music loop");
+        _gameStartTime = Time.timeSinceLevelLoad;
     }
 
     private void Update() {

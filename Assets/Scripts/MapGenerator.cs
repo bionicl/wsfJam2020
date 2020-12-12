@@ -18,7 +18,9 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject nextPiece = prefabs[0];
 
+        generatedPieces.Add(Instantiate(nextPiece, transform.position, Quaternion.identity, transform));
     }
 
     // Update is called once per frame
@@ -26,56 +28,45 @@ public class MapGenerator : MonoBehaviour
     {
         float p = Random.Range(0.0f, 1.0f);
 
-        if (generatedPieces.Count == 0)
+        GameObject lastPiece = generatedPieces[generatedPieces.Count - 1];
+
+        int failCount = 0;
+        while (lastPiece.transform.position.x < transform.position.x)
         {
-            GameObject nextPiece = prefabs[0];
-
-            generatedPieces.Add(Instantiate(nextPiece, transform.position, Quaternion.identity, transform));
-        }
-        else
-        {
-
-            GameObject lastPiece = generatedPieces[generatedPieces.Count - 1];
-
-            int failCount = 0;
-            while (lastPiece.transform.position.x < transform.position.x)
+            lastPiece = generatedPieces[generatedPieces.Count - 1];
+            PieceType nextPieceType;
+            if (lastPiece.transform.position.y > yTopBound)
             {
-                lastPiece = generatedPieces[generatedPieces.Count - 1];
-                PieceType nextPieceType;
-                if (lastPiece.transform.position.y > yTopBound)
-                {
-                    nextPieceType = lastPiece.GetComponent<GeneratorPieceData>().pieceType == PieceType.SlopeUp ? PieceType.Platform : PieceType.SlopeDown;
-                }
-                else if (lastPiece.transform.position.y < yBottomBound)
-                {
-                    nextPieceType = lastPiece.GetComponent<GeneratorPieceData>().pieceType == PieceType.SlopeDown ? PieceType.Platform : PieceType.SlopeUp;
-                }
-                else
-                {
-                    nextPieceType = GeneratorPieceData.GetNextPieceType(lastPiece.GetComponent<GeneratorPieceData>().pieceType, GameManager.instance.Multiplayer/4.0f+0.75f);
-                }
-
-                List<GameObject> possibleNextPieces = prefabs.Where((e) => e.GetComponent<GeneratorPieceData>().pieceType == nextPieceType).ToList();
-
-                GameObject nextPiece = possibleNextPieces[Random.Range(0, possibleNextPieces.Count)];
-
-                Vector2 lastPieceEndPlatformOffset = lastPiece.GetComponent<PolygonCollider2D>().points[lastPiece.GetComponent<GeneratorPieceData>().colliderPlatformEndPointIndex];
-                Vector2 nextPieceStartPlatformOffset = nextPiece.GetComponent<PolygonCollider2D>().points[nextPiece.GetComponent<GeneratorPieceData>().colliderPlatformStartPointIndex];
-
-                Vector2 offsetsDiff = lastPieceEndPlatformOffset * lastPiece.transform.localScale - nextPieceStartPlatformOffset * nextPiece.transform.localScale;
-
-                Vector3 nextPosition = lastPiece.transform.position + new Vector3(offsetsDiff.x, offsetsDiff.y);
-                if (nextPosition.y > yBottomBound && nextPosition.y < yTopBound || failCount > maxFailCount)
-                {
-                    generatedPieces.Add(Instantiate(nextPiece, nextPosition, Quaternion.identity, transform));
-                    failCount = 0;
-                }
-                else
-                {
-                    failCount++;
-                }
+                nextPieceType = lastPiece.GetComponent<GeneratorPieceData>().pieceType == PieceType.SlopeUp ? PieceType.Platform : PieceType.SlopeDown;
+            }
+            else if (lastPiece.transform.position.y < yBottomBound)
+            {
+                nextPieceType = lastPiece.GetComponent<GeneratorPieceData>().pieceType == PieceType.SlopeDown ? PieceType.Platform : PieceType.SlopeUp;
+            }
+            else
+            {
+                nextPieceType = GeneratorPieceData.GetNextPieceType(lastPiece.GetComponent<GeneratorPieceData>().pieceType, GameManager.instance.Multiplayer/4.0f+0.75f);
             }
 
+            List<GameObject> possibleNextPieces = prefabs.Where((e) => e.GetComponent<GeneratorPieceData>().pieceType == nextPieceType).ToList();
+
+            GameObject nextPiece = possibleNextPieces[Random.Range(0, possibleNextPieces.Count)];
+
+            Vector2 lastPieceEndPlatformOffset = lastPiece.GetComponent<PolygonCollider2D>().points[lastPiece.GetComponent<GeneratorPieceData>().colliderPlatformEndPointIndex];
+            Vector2 nextPieceStartPlatformOffset = nextPiece.GetComponent<PolygonCollider2D>().points[nextPiece.GetComponent<GeneratorPieceData>().colliderPlatformStartPointIndex];
+
+            Vector2 offsetsDiff = lastPieceEndPlatformOffset * lastPiece.transform.localScale - nextPieceStartPlatformOffset * nextPiece.transform.localScale;
+
+            Vector3 nextPosition = lastPiece.transform.position + new Vector3(offsetsDiff.x, offsetsDiff.y);
+            if (nextPosition.y > yBottomBound && nextPosition.y < yTopBound || failCount > maxFailCount)
+            {
+                generatedPieces.Add(Instantiate(nextPiece, nextPosition, Quaternion.identity, transform));
+                failCount = 0;
+            }
+            else
+            {
+                failCount++;
+            }
         }
         Scroll();
         DestroyOutsideBound();

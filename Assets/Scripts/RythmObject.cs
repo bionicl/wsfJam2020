@@ -19,7 +19,7 @@ public class RythmObject : MonoBehaviour
     public float normalStrength = 0f;
     [Range(0, 50)]
     public float mainStrength = 10f;
-    [Range(0, 0.1f)]
+    [Range(0, 0.25f)]
     public float delay = 0;
     public bool reactsToMainBeat = true;
 
