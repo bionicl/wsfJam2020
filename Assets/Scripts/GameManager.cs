@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
     IEnumerator StartMusicWithDelay() {
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.Play("Music loop");
-        _gameStartTime = Time.timeSinceLevelLoad;
     }
 
     private void Update() {
@@ -107,11 +106,9 @@ public class GameManager : MonoBehaviour
 
     // Game control
     public void StartGame() {
-        AudioManager.instance.Play("Music loop");
         _gameStartTime = Time.timeSinceLevelLoad;
-        Time.timeScale = 1;
         _gameStarted = true;
-        //ui.startGameObject.SetActive(false);
+        ui.startGameObject.GetComponent<Animator>().enabled = true;
     }
 
     // DEBUG
