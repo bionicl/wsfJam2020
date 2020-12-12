@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public enum TargetType
@@ -8,53 +9,54 @@ public enum TargetType
     Funky,
     Rat
 }
+
 public class TargetBehaviour : MonoBehaviour
 {
-    private Rigidbody2D Rigidbody2D;
-    private CapsuleCollider2D CapsuleCollider2D;
-    public bool TargetUsed = false;
+    private Rigidbody2D rb;
+    private Collider2D ownCollider;
+    public bool targetUsed = false;
 
     public TargetType type;
+
+    [HideInInspector] public UnityEvent gotHit;
+    
     void Start()
     {
-        Rigidbody2D = GetComponent<Rigidbody2D>();
-        CapsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
+        ownCollider = GetComponent<Collider2D>();
 
-        if (Rigidbody2D == null)
+        if (rb == null)
         {
             Debug.LogError("No Rigidbody2D component");
         }
-        if (CapsuleCollider2D == null)
+        if (ownCollider == null)
         {
-            Debug.LogError("No CapsuleCollider2D component");
+            Debug.LogError("No Collider2D component");
         }
     }
 
-    void Update()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("vinyl projectile") && TargetUsed == false)
+        if (other.CompareTag("vinyl projectile") && targetUsed == false)
         {
-            GameManager gameManager = FindObjectOfType<GameManager>();
-
+            gotHit.Invoke();
+            
             if (type == TargetType.Funky)
             {
-                gameManager.HitFunky();
+                GameManager.instance.HitFunky();
             }
             else
             {
-                gameManager.HitRat();
+                GameManager.instance.HitRat();
             }
+            
+            // Destroy the vinyl projectile
             if (other.transform.parent != null)
             {
                 Destroy(other.transform.parent.gameObject);
             }
 
-            TargetUsed = true;
+            targetUsed = true;
         }
     }
 }
