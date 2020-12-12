@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1852967846235899185}
   - component: {fileID: 1852967846235899598}
   - component: {fileID: 1852967846235899597}
+  - component: {fileID: 408344476069175315}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -112,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d67722efa9cf84c83620bef717dae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discShooter: {fileID: 408344476069175315}
   platformsLayerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -136,6 +138,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 5
+--- !u!114 &408344476069175315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852967846235899184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e725647473c52ef4fa514652bc219d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 506969900310488470, guid: 94eced0d97fdfbe4cbe270f70aaeb49f, type: 3}
+  maxShotsPerSecond: 3
 --- !u!1 &6023800560266179025
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,8 +14,12 @@ public class ProjectileShooter : MonoBehaviour
 
     public void TryShootOnce( Vector2 direction )
     {
-        if( timeSinceLastShot < 1 / maxShotsPerSecond ) return;
-        
+        if (timeSinceLastShot < 1 / maxShotsPerSecond)
+            return;
+
+        if (!GameManager.instance.RemoveVinyl())
+            return;
+
         GameObject projectile = Instantiate( projectilePrefab, transform );
         projectile.GetComponent<Projectile>().Init( direction );
 
