@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [Tooltip("Per second")]
     public float levelDecreaseSpeed = .02f;
 
+    public bool gameOver = false;
+
     // Internal
     bool _gameStarted = false;
     float _gameStartTime = -1;
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
             StartGame();
         }
 
-        if (_gameStarted) {
+        if (_gameStarted && !gameOver) {
             _level -= levelDecreaseSpeed * Time.deltaTime;
             _level = Mathf.Clamp01(_level);
 
@@ -61,6 +63,11 @@ public class GameManager : MonoBehaviour
             points += newPoints;
             ui.pointsText.text = Mathf.FloorToInt(points).ToString();
         }
+
+        if (level <= 0) {
+            GameOver();
+        }
+
         if (Input.GetKeyDown(KeyCode.V)) {
             AddVinyl();
         }
@@ -109,6 +116,11 @@ public class GameManager : MonoBehaviour
         _gameStartTime = Time.timeSinceLevelLoad;
         _gameStarted = true;
         ui.startGameObject.GetComponent<Animator>().enabled = true;
+    }
+    public void GameOver() {
+        gameOver = true;
+        ui.gameOver.gameObject.SetActive(true);
+        ui.gameoverScoreText.text = Mathf.FloorToInt(points).ToString();
     }
 
     // DEBUG

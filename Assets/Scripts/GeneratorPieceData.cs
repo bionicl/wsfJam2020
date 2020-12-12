@@ -53,7 +53,6 @@ public class GeneratorPieceData : MonoBehaviour
         }
 
         float after = probs[3];
-        Debug.Log(after - before);
 
         int i;
         float p = UnityEngine.Random.Range(0.0f, 1.0f);

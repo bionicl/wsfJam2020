@@ -26,7 +26,7 @@ public class MapGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.gameStartTime == -1)
+        if (GameManager.instance.gameStartTime == -1 || GameManager.instance.gameOver)
             return;
 
         float p = Random.Range(0.0f, 1.0f);

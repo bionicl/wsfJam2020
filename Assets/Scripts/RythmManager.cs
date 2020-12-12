@@ -36,9 +36,11 @@ public class RythmManager : MonoBehaviour
     private void Update() {
         if ((Time.timeSinceLevelLoad - delay) - (repeatTime * bitNo) >= repeatTime) {
             bitNo++;
+            bool isHit = bitNo % 4 == 0;
             foreach (var item in objects) {
-                item.Hit(bitNo % 4 == 0);
+                item.Hit(isHit);
             }
+            UiManager.instance.gameOver.Hit(isHit);
         }
     }
 }
