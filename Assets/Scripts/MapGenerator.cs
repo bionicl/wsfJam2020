@@ -8,6 +8,8 @@ public class MapGenerator : MonoBehaviour
     public List<GameObject> prefabs;
     public float speed = 1;
     public float xBoundOffset = -10;
+    public float yTopBound = 10;
+    public float yBottomBound = -10;
 
     private List<GameObject> generatedPieces = new List<GameObject>();
 
@@ -45,8 +47,15 @@ public class MapGenerator : MonoBehaviour
                 Vector2 nextPieceStartPlatformOffset = nextPiece.GetComponent<PolygonCollider2D>().points[nextPiece.GetComponent<GeneratorPieceData>().colliderPlatformStartPointIndex];
 
                 Vector2 offsetsDiff = lastPieceEndPlatformOffset * lastPiece.transform.localScale - nextPieceStartPlatformOffset * nextPiece.transform.localScale;
-
-                generatedPieces.Add(Instantiate(nextPiece, lastPiece.transform.position + new Vector3(offsetsDiff.x, offsetsDiff.y), Quaternion.identity, transform));
+                Vector3 nextPosition = lastPiece.transform.position + new Vector3(offsetsDiff.x, offsetsDiff.y);
+                if(nextPosition.y > yBottomBound && nextPosition.y < yTopBound)
+                {
+                    generatedPieces.Add(Instantiate(nextPiece, nextPosition, Quaternion.identity, transform));
+                }
+                else
+                {
+                    Debug.Log("Nie można niżej albo wyżej!");
+                }
             }
 
         }

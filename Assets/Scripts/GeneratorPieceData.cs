@@ -27,6 +27,8 @@ public class GeneratorPieceData : MonoBehaviour
                 return new float[] { 0, 0, 0 };
         }
     }
+
+
     public static PieceType GetNextPieceType(PieceType lastPieceType)
     {
         float[] probabilities = GetProbabilitesForNextPiece(lastPieceType);

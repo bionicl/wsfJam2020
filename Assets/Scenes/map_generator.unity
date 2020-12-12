@@ -253,9 +253,7 @@ MonoBehaviour:
   - {fileID: 4682975392242079740, guid: 6dbc80c8deb51a446b3c007c7f173105, type: 3}
   - {fileID: 3289039003468919302, guid: 40ae1b9f33dabb24293ca88bfbbc4d0b, type: 3}
   - {fileID: 4777231638447566919, guid: 530b7ce61eb454c4eb89be552de0c309, type: 3}
-  prefabsProbabilities:
-  - 0
-  - 0.8
-  - 0.9
   speed: 2
   xBoundOffset: -20
+  yTopBound: 5
+  yBottomBound: -5
