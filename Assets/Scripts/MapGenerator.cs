@@ -5,66 +5,66 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     public List<GameObject> prefabs;
-    public int maxVisiblePieces = 20;
     public float speed = 1;
+    public float xBoundOffset = -10;
 
-    private List<GameObject> currentVisiblePieces;
+    private List<GameObject> generatedPieces = new List<GameObject>();
 
-    private GameObject nextPiece;
+
     // Start is called before the first frame update
     void Start()
     {
-        currentVisiblePieces = new List<GameObject>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Scroll();
-        if (nextPiece == null)
+        GameObject nextPiece = prefabs[Random.Range(0, prefabs.Count)];
+        if(generatedPieces.Count == 0)
         {
-            nextPiece = prefabs[Random.Range(0, prefabs.Count)];
-        }
-        if(currentVisiblePieces.Count > 0)
-        {
-            GameObject lastpiece = currentVisiblePieces[currentVisiblePieces.Count - 1];
-            if (!lastpiece.GetComponent<PolygonCollider2D>().bounds.Intersects(nextPiece.GetComponent<PolygonCollider2D>().bounds))
-            {
-                SpawnPiece();
-                Debug.Log("Dlaczego");
-            }
+            generatedPieces.Add(Instantiate(nextPiece,transform.position,Quaternion.identity,transform));
         }
         else
         {
-            SpawnPiece();
-        }
-    }
+            GameObject lastPiece = generatedPieces[generatedPieces.Count - 1];
+            while(lastPiece.transform.position.x < transform.position.x)
+            {
+                lastPiece = generatedPieces[generatedPieces.Count - 1];
+                Vector2 lastPieceEndPlatformOffset = lastPiece.GetComponent<PolygonCollider2D>().points[lastPiece.GetComponent<GeneratorPieceData>().colliderPlatformEndPointIndex];
+                Vector2 nextPieceStartPlatformOffset = nextPiece.GetComponent<PolygonCollider2D>().points[nextPiece.GetComponent<GeneratorPieceData>().colliderPlatformStartPointIndex];
 
-    void SpawnPiece()
-    {
-        if(nextPiece != null)
-        {
-            if (currentVisiblePieces.Count == 0)
-            {
-                currentVisiblePieces.Add(Instantiate(nextPiece, transform));
+                Vector2 offsetsDiff = lastPieceEndPlatformOffset * lastPiece.transform.localScale - nextPieceStartPlatformOffset * nextPiece.transform.localScale;
+
+                generatedPieces.Add(Instantiate(nextPiece, lastPiece.transform.position + new Vector3(offsetsDiff.x, offsetsDiff.y), Quaternion.identity, transform));
             }
-            else
-            {
-                GameObject lastpiece = currentVisiblePieces[currentVisiblePieces.Count - 1];
-                Vector2 lastPiecePosition = new Vector2(lastpiece.transform.position.x, lastpiece.transform.position.y);
-                Vector2 lastPiecePlatformEnd = lastpiece.GetComponent<PolygonCollider2D>().points[lastpiece.GetComponent<GeneratorPieceData>().colliderPlatformEndPointIndex];
-                Vector2 nextPiecePlatformStart = nextPiece.GetComponent<PolygonCollider2D>().points[nextPiece.GetComponent<GeneratorPieceData>().colliderPlatformStartPointIndex];
-                currentVisiblePieces.Add(Instantiate(nextPiece, lastPiecePlatformEnd - nextPiecePlatformStart + lastPiecePosition, Quaternion.identity, transform));
-            }
-            nextPiece = null;
+
         }
+        Scroll();
+        DestroyOutsideBound();
     }
 
     void Scroll()
     {
-        foreach (GameObject item in currentVisiblePieces)
+        foreach (GameObject item in generatedPieces)
         {
-            item.transform.Translate(Vector3.left * Time.deltaTime * speed);
+            item.transform.Translate(Vector3.left * speed * Time.deltaTime);
+        }
+    }
+    void DestroyOutsideBound()
+    {
+        for (int i = 0; i < generatedPieces.Count;)
+        {
+            if(generatedPieces[i].transform.position.x < transform.position.x + xBoundOffset)
+            {
+                GameObject gameObject = generatedPieces[i];
+                generatedPieces.Remove(gameObject);
+                Destroy(gameObject);
+            }
+            else
+            {
+                i++;
+            }
         }
     }
 }
