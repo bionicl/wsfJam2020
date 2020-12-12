@@ -15,7 +15,10 @@ public class Projectile : MonoBehaviour
     {
         direction = shootDirection;
 
+        // Rotate the projectile to point in the shooting direction
         float angle = Mathf.Atan2( shootDirection.y, shootDirection.x ) * Mathf.Rad2Deg;
+        if( angle < -90f || angle > 90f ) angle += 180f;
+        
         transform.rotation = Quaternion.Euler( 0, 0, angle );
     }
     
