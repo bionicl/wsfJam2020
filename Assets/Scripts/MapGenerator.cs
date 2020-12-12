@@ -52,10 +52,6 @@ public class MapGenerator : MonoBehaviour
                 {
                     generatedPieces.Add(Instantiate(nextPiece, nextPosition, Quaternion.identity, transform));
                 }
-                else
-                {
-                    Debug.Log("Nie można niżej albo wyżej!");
-                }
             }
 
         }

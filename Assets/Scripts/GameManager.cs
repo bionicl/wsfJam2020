@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
             points += newPoints;
             ui.pointsText.text = Mathf.FloorToInt(points).ToString();
         }
+        if (Input.GetKeyDown(KeyCode.V)) {
+            AddVinyl();
+        }
     }
     int Multiplayer {
         get {
@@ -81,7 +84,7 @@ public class GameManager : MonoBehaviour
             return false;
         ui.RemoveVinyl();
         _vinylNum--;
-        return false;
+        return true;
     }
 
     // Hidding enemies

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4777231638447566914}
   - component: {fileID: 4777231638447566917}
   - component: {fileID: 4777231638447566916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Slope2Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

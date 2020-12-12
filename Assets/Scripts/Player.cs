@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Animator animator;
+    public ProjectileShooter discShooter;
+    Camera cam;
+
     [SerializeField] private LayerMask platformsLayerMask;
     private Rigidbody2D _rigidBody2D;
     private CapsuleCollider2D _capsuleCollider2D;
+
+
 
 
     void Start()
@@ -24,8 +30,9 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("The _capsuleCollider2D is NULL for Player 1.");
         }
-    }
 
+        cam = Camera.main;
+    }
 
     private void Update()
     {
@@ -51,25 +58,30 @@ public class Player : MonoBehaviour
         {
             _capsuleCollider2D.size = new Vector2(1f, 2f);
         }
-            
 
+        CheckShooting();
+        HandleAnimations();
     }
 
+    void HandleAnimations()
+    {
+        animator.SetBool( "jumping", !IsGrounded() );
+        animator.SetBool( "velocity_up", _rigidBody2D.velocity.y > 0 );
+    }
 
     private bool IsGrounded()
     {
         RaycastHit2D raycastHit2d = Physics2D.CapsuleCast(_capsuleCollider2D.bounds.center, _capsuleCollider2D.bounds.size, 0f, 0, Vector2.down, 0.4f, platformsLayerMask);
-        Debug.Log(raycastHit2d.collider.gameObject.tag);
         return raycastHit2d.collider != null;
     }
 
     private Collider2D GetStandingOnPlatform()
     {
         RaycastHit2D raycastHit2d = Physics2D.CapsuleCast(_capsuleCollider2D.bounds.center, _capsuleCollider2D.bounds.size, 0f, 0, Vector2.down, 0.4f, platformsLayerMask);
-        Debug.Log(raycastHit2d.collider.gameObject.tag);
+        //Debug.Log(raycastHit2d.collider.gameObject.tag);
         if (raycastHit2d.collider != null)
         {
-            if (raycastHit2d.collider.gameObject.tag == "Platforms")
+            if (raycastHit2d.collider.gameObject.CompareTag( "Platforms" ))
             {
                 return raycastHit2d.collider;
             } 
@@ -78,13 +90,28 @@ public class Player : MonoBehaviour
 
     }
 
-
-
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Platforms" && IsGrounded() && Input.GetKeyDown(KeyCode.DownArrow))
+        if (other.gameObject.CompareTag( "Platforms" ) && IsGrounded() && Input.GetKeyDown(KeyCode.DownArrow))
         {
             other.gameObject.GetComponent<Collider2D>().enabled = false;
+        }
+    }
+
+    void OnTriggerEnter2D( Collider2D other )
+    {
+        // Pick up vinyls
+        if( other.CompareTag( "vinyl pickup" ) && GameManager.instance.AddVinyl() )
+        {
+            Destroy( other.gameObject );
+        }
+    }
+
+    void CheckShooting() {
+        if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            Debug.Log("Shoot!");
+            Vector2 shootDir = (Input.mousePosition - cam.WorldToScreenPoint(transform.position)).normalized;
+            discShooter.TryShootOnce(shootDir);
         }
     }
 
