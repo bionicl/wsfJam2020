@@ -136,8 +136,9 @@ MonoBehaviour:
   - {fileID: 5760596979300014835}
   - {fileID: 7185013677262350730}
   - {fileID: 3673895490623556760}
-  chanceOfRobot: 0.1
+  chanceOfRobot: 0.2
   chanceOfFunky: 0.6
+  isOnScreen: 0
 --- !u!1 &3527734615105174037
 GameObject:
   m_ObjectHideFlags: 0

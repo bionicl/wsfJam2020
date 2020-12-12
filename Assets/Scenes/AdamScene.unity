@@ -290,6 +290,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4561506513141048334, guid: 2718024f675454f2b99f5d235999a49b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2718024f675454f2b99f5d235999a49b, type: 3}
 --- !u!1 &260894920
@@ -578,13 +582,14 @@ MonoBehaviour:
   startLevel: 0.5
   funkyHitValue: 0.15
   funkyRatValue: 0.15
-  distanceMultiplayer: 10
-  pointsMultiplayer: 5
+  distanceMultiplier: 10
+  pointsMultiplier: 5
   multiplayers:
   - 0.8
   - 0.6
   - 0
   levelDecreaseSpeed: 0.02
+  gameOver: 0
 --- !u!114 &1197929775
 MonoBehaviour:
   m_ObjectHideFlags: 0
