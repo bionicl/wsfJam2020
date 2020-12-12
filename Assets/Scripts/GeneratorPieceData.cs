@@ -20,12 +20,13 @@ public class GeneratorPieceData : MonoBehaviour
 {
     public static Dictionary<PieceType, float[]> nextPiecesProbapilietes = new Dictionary<PieceType, float[]>()
     {
-        { PieceType.Platform, new float[] {0.76f, 0.02f, 0.02f, 0.05f, 0.15f, 0.00f} },
-        { PieceType.SlopeUp, new float[] {0.50f, 0.50f, 0.00f, 0.00f, 0.00f, 0.00f}},
-        { PieceType.SlopeDown,new float[] {0.30f, 0.00f, 0.50f, 0.10f, 0.10f, 0.00f}},
-        { PieceType.Fence,new float[] {0.70f, 0.00f, 0.20f, 0.00f, 0.10f, 0.00f}},
-        { PieceType.AbovePlatform,new float[] { 0.30f, 0.00f, 0.00f, 0.00f, 0.70f, 0.00f }},
-        { PieceType.Start, new float[] { 1.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f }},
+        { PieceType.Platform, new float[] {0.73f, 0.02f, 0.02f, 0.05f, 0.15f, 0.00f, 0.03f} },
+        { PieceType.SlopeUp, new float[] {0.50f, 0.50f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f}},
+        { PieceType.SlopeDown,new float[] {0.30f, 0.00f, 0.50f, 0.10f, 0.10f, 0.00f, 0.00f}},
+        { PieceType.Fence,new float[] {0.70f, 0.00f, 0.20f, 0.00f, 0.10f, 0.00f, 0.00f}},
+        { PieceType.AbovePlatform,new float[]{0.30f, 0.00f, 0.00f, 0.00f, 0.60f, 0.00f, 0.10f} },
+        { PieceType.Start, new float[] {0.80f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.20f}},
+        { PieceType.Ceiling, new float[] {0.60f, 0.05f, 0.05f, 0.00f, 0.10f, 0.00f, 0.20f}},
     };
 
     public static List<int> obstaclesIndexes = new List<int>() { 3 };
