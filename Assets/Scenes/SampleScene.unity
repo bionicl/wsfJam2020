@@ -239,6 +239,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8240515988492991166, guid: 926714c16cd42ea48b0b3787565f95f3, type: 3}
+      propertyPath: fallThroughPlatforms.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 926714c16cd42ea48b0b3787565f95f3, type: 3}
 --- !u!1001 &486868673

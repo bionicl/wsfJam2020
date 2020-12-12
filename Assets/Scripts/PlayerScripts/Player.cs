@@ -13,6 +13,8 @@ namespace PlayerScripts
         Rigidbody2D _rigidBody2D;
         CapsuleCollider2D _capsuleCollider2D;
         SpriteRenderer _spriteRenderer;
+
+        public LayerMask fallThroughPlatforms;
         
         [HideInInspector] public bool invulnerability = false;
 
@@ -52,9 +54,12 @@ namespace PlayerScripts
             }
             
             // Going down platforms
-            else if (IsGrounded() && platform != null && Input.GetKey(KeyCode.S))
+            else if( IsGrounded() && platform != null && Input.GetKey( KeyCode.S ) )
             {
-                platform.enabled = false;
+                if( ( ( 1 << platform.gameObject.layer ) & fallThroughPlatforms ) != 0 )
+                {
+                    platform.enabled = false;
+                }
             }
 
             // Sliding
