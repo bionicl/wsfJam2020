@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingPrefab: {fileID: 494726404771976298, guid: b2eded7092d68c444ab9fb2d7003bad3, type: 3}
-  scrollSpeed: 5
-  cutoff: -15
+  scrollSpeed: 10
+  cutoff: -20
   nrOfBuildings: 5

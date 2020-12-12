@@ -14,6 +14,8 @@ public class UiManager : MonoBehaviour
     public GameObject startGameObject;
     public Text distanceText;
     public Text pointsText;
+    public GameOverAnimationsController gameOver;
+    public Text gameoverScoreText;
 
     [Header("Spawn areas")]
     public Transform vinylSpawnArea;

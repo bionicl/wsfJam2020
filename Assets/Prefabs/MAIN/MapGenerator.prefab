@@ -50,7 +50,10 @@ MonoBehaviour:
   - {fileID: 6267706039327188953, guid: 0f5aa6b6064315a4bb42a99248b547c5, type: 3}
   - {fileID: 7930343806887575812, guid: ce2cbdcb828070542ad0291067814da3, type: 3}
   - {fileID: 4682975392242079740, guid: 6dbc80c8deb51a446b3c007c7f173105, type: 3}
-  speed: 40
-  xBoundOffset: -130
-  yTopBound: 15
-  yBottomBound: -15
+  speed: 15
+  xBoundOffset: -100
+  yTopBound: 0
+  yBottomBound: -8
+  maxFailCount: 1000
+  timeToNextVinyl: 5
+  vinylPickup: {fileID: 6893069618932223252, guid: 9fbdc41a03c70d84b94b9e5a8c6cdccf, type: 3}
