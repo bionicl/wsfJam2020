@@ -206,8 +206,8 @@ GameObject:
   - component: {fileID: 280760721028455116}
   - component: {fileID: 4673166320190584395}
   - component: {fileID: 4555706469628178776}
-  m_Layer: 9
-  m_Name: New Sprite
+  m_Layer: 11
+  m_Name: Floating platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

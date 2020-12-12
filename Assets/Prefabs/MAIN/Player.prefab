@@ -51,6 +51,9 @@ MonoBehaviour:
   animator: {fileID: 2911240694710625890}
   discShooter: {fileID: 8765331695712017618}
   groundCheck: {fileID: 8768304423685609071}
+  fallThroughPlatforms:
+    serializedVersion: 2
+    m_Bits: 0
   invulnerability: 0
   jumpForce: 5
 --- !u!114 &8765331695712017618
@@ -250,9 +253,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d793ba7c390b03499a7505d98b6cd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grounded: 0
   platformsLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
 --- !u!61 &1239301388810664207
 BoxCollider2D:
   m_ObjectHideFlags: 0
