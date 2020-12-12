@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5153021226727569135}
   - component: {fileID: 5153021226727569104}
   m_Layer: 0
-  m_Name: generator
+  m_Name: MapGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 4682975392242079740, guid: 6dbc80c8deb51a446b3c007c7f173105, type: 3}
+  - {fileID: 4677291014644047616, guid: d1206c991ae0db341be479a7a6341f79, type: 3}
   - {fileID: 3289039003468919302, guid: 40ae1b9f33dabb24293ca88bfbbc4d0b, type: 3}
   - {fileID: 4777231638447566919, guid: 530b7ce61eb454c4eb89be552de0c309, type: 3}
-  speed: 2
-  xBoundOffset: -20
-  yTopBound: 5
-  yBottomBound: -5
+  - {fileID: 6267706039327188953, guid: 0f5aa6b6064315a4bb42a99248b547c5, type: 3}
+  - {fileID: 7930343806887575812, guid: ce2cbdcb828070542ad0291067814da3, type: 3}
+  - {fileID: 4682975392242079740, guid: 6dbc80c8deb51a446b3c007c7f173105, type: 3}
+  speed: 40
+  xBoundOffset: -130
+  yTopBound: 15
+  yBottomBound: -15

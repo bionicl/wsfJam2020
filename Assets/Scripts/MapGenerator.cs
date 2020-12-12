@@ -28,6 +28,7 @@ public class MapGenerator : MonoBehaviour
         if(generatedPieces.Count == 0)
         {
             GameObject nextPiece = prefabs[0];
+
             generatedPieces.Add(Instantiate(nextPiece,transform.position,Quaternion.identity,transform));
         }
         else
@@ -47,6 +48,7 @@ public class MapGenerator : MonoBehaviour
                 Vector2 nextPieceStartPlatformOffset = nextPiece.GetComponent<PolygonCollider2D>().points[nextPiece.GetComponent<GeneratorPieceData>().colliderPlatformStartPointIndex];
 
                 Vector2 offsetsDiff = lastPieceEndPlatformOffset * lastPiece.transform.localScale - nextPieceStartPlatformOffset * nextPiece.transform.localScale;
+
                 Vector3 nextPosition = lastPiece.transform.position + new Vector3(offsetsDiff.x, offsetsDiff.y);
                 if(nextPosition.y > yBottomBound && nextPosition.y < yTopBound)
                 {
