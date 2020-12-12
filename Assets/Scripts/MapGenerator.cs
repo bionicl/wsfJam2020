@@ -52,7 +52,7 @@ public class MapGenerator : MonoBehaviour
                 }
                 else
                 {
-                    nextPieceType = GeneratorPieceData.GetNextPieceType(lastPiece.GetComponent<GeneratorPieceData>().pieceType);
+                    nextPieceType = GeneratorPieceData.GetNextPieceType(lastPiece.GetComponent<GeneratorPieceData>().pieceType, GameManager.instance.Multiplayer/4.0f+0.75f);
                 }
 
                 List<GameObject> possibleNextPieces = prefabs.Where((e) => e.GetComponent<GeneratorPieceData>().pieceType == nextPieceType).ToList();

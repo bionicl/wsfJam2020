@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
             AddVinyl();
         }
     }
-    int Multiplayer {
+    public int Multiplayer {
         get {
             if (level > multiplayers[0])
                 return 3;
