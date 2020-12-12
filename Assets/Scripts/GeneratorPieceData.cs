@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public enum PieceType
     Fence,
     AbovePlatform,
     Start,
+    Ceiling,
 }
 
 
@@ -19,23 +21,47 @@ public class GeneratorPieceData : MonoBehaviour
     public static Dictionary<PieceType, float[]> nextPiecesProbapilietes = new Dictionary<PieceType, float[]>()
     {
         { PieceType.Platform, new float[] {0.76f, 0.02f, 0.02f, 0.05f, 0.15f, 0.00f} },
-        { PieceType.SlopeUp, new float[] { 0.28f, 0.70f, 0.02f, 0.00f, 0.00f, 0.00f }},
-        { PieceType.SlopeDown,new float[] { 0.23f, 0.02f, 0.55f, 0.10f, 0.10f, 0.00f }},
-        { PieceType.Fence,new float[] { 0.70f, 0.00f, 0.20f, 0.00f, 0.10f, 0.00f }},
+        { PieceType.SlopeUp, new float[] {0.50f, 0.50f, 0.00f, 0.00f, 0.00f, 0.00f}},
+        { PieceType.SlopeDown,new float[] {0.30f, 0.00f, 0.50f, 0.10f, 0.10f, 0.00f}},
+        { PieceType.Fence,new float[] {0.70f, 0.00f, 0.20f, 0.00f, 0.10f, 0.00f}},
         { PieceType.AbovePlatform,new float[] { 0.30f, 0.00f, 0.00f, 0.00f, 0.70f, 0.00f }},
         { PieceType.Start, new float[] { 1.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f }},
     };
 
+    public static List<int> obstaclesIndexes = new List<int>() { 3 };
 
-    public static PieceType GetNextPieceType(PieceType lastPieceType)
+    public static PieceType GetNextPieceType(PieceType lastPieceType, float difficultyMultiplier = 1)
     {
         float[] probabilities = nextPiecesProbapilietes[lastPieceType];
-        int i;
-        float p = Random.Range(0.0f, 1.0f);
-        float sum = 0;
-        for (i = 0; i < probabilities.Length; i++)
+        float[] probs = new float[probabilities.Length];
+        probabilities.CopyTo(probs, 0);
+
+        float before = probs[3];
+
+        foreach (var item in obstaclesIndexes)
         {
-            sum += probabilities[i];
+            probs[item] *= difficultyMultiplier;
+        }
+        float sum = 0;
+        foreach (var item in probs)
+        {
+            sum += item;
+        }
+        for (int j = 0; j < probs.Length; j++)
+        {
+            probs[j] /= sum;
+        }
+
+        float after = probs[3];
+        Debug.Log(after - before);
+
+        int i;
+        float p = UnityEngine.Random.Range(0.0f, 1.0f);
+
+        sum = 0;
+        for (i = 0; i < probs.Length; i++)
+        {
+            sum += probs[i];
             if (p < sum)
                 break;
         }
