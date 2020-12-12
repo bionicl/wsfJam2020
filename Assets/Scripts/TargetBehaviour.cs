@@ -30,9 +30,12 @@ public class TargetBehaviour : MonoBehaviour
     {
         if (other.CompareTag("vinyl projectile"))
         {
-            Debug.Log("Vinyl projectile hit target!");//to delete later
-            //call method to add Funk
-            Destroy(other);
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            gameManager.HitFunky();
+            if (other.transform.parent != null)
+            {
+                Destroy(other.transform.parent.gameObject);
+            }
         }
     }
 }
