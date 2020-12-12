@@ -11,6 +11,7 @@ public enum PieceType
     Fence,
     AbovePlatform,
     Start,
+    Ceiling,
 }
 
 
