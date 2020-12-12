@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
         _rigidBody2D = GetComponent<Rigidbody2D>();
         _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
 
+        _capsuleCollider2D.size = new Vector2(1f, 2f);
+
         if (_rigidBody2D == null)
         {
             Debug.LogError("The RigidBody2D is NULL for Player 1.");
@@ -40,6 +42,16 @@ public class Player : MonoBehaviour
         {
             platform.enabled = false;
         }
+
+        if (IsGrounded() && Input.GetKey(KeyCode.C))
+        {
+            _capsuleCollider2D.size = new Vector2(1f, 1f);
+        }
+        else
+        {
+            _capsuleCollider2D.size = new Vector2(1f, 2f);
+        }
+            
 
     }
 
