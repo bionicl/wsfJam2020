@@ -9,7 +9,7 @@ public class UiManager : MonoBehaviour
 
     [Header("UI elements")]
     public Slider slider;
-    public Animator levelAnimator;
+    public RythmObject sliderObject;
 
     [Header("Spawn areas")]
     public Transform vinylSpawnArea;

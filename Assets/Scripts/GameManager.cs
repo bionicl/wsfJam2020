@@ -55,12 +55,12 @@ public class GameManager : MonoBehaviour
     public void HitFunky() {
         _level += funkyHitValue;
         _level = Mathf.Clamp01(_level);
-        ui.levelAnimator.SetTrigger("Change");
+        ui.sliderObject.Hit(true);
     }
     public void HitRat() {
         _level -= funkyRatValue;
         _level = Mathf.Clamp01(_level);
-        ui.levelAnimator.SetTrigger("Change");
+        ui.sliderObject.Hit(true);
     }
 
     // DEBUG

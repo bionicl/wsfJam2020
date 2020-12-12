@@ -9,6 +9,7 @@ public class RythmManager : MonoBehaviour
 
     [Header("Settings")]
     public int bpm = 120;
+    public float delay = 0;
 
     // internal
     float repeatTime;
@@ -32,7 +33,7 @@ public class RythmManager : MonoBehaviour
     }
 
     private void Update() {
-        if (Time.timeSinceLevelLoad - (repeatTime * bitNo) >= repeatTime) {
+        if ((Time.timeSinceLevelLoad + delay) - (repeatTime * bitNo) >= repeatTime) {
             bitNo++;
             foreach (var item in objects) {
                 item.Hit(bitNo % 4 == 0);
