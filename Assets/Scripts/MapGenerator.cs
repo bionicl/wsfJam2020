@@ -10,6 +10,7 @@ public class MapGenerator : MonoBehaviour
     public float xBoundOffset = -10;
     public float yTopBound = 10;
     public float yBottomBound = -10;
+    public int maxFailCount = 1000;
 
     private List<GameObject> generatedPieces = new List<GameObject>();
 
@@ -24,12 +25,12 @@ public class MapGenerator : MonoBehaviour
     void Update()
     {
         float p = Random.Range(0.0f, 1.0f);
-        
-        if(generatedPieces.Count == 0)
+
+        if (generatedPieces.Count == 0)
         {
             GameObject nextPiece = prefabs[0];
 
-            generatedPieces.Add(Instantiate(nextPiece,transform.position,Quaternion.identity,transform));
+            generatedPieces.Add(Instantiate(nextPiece, transform.position, Quaternion.identity, transform));
         }
         else
         {
@@ -40,11 +41,23 @@ public class MapGenerator : MonoBehaviour
             while (lastPiece.transform.position.x < transform.position.x)
             {
                 lastPiece = generatedPieces[generatedPieces.Count - 1];
-                PieceType nextPieceType = GeneratorPieceData.GetNextPieceType(lastPiece.GetComponent<GeneratorPieceData>().pieceType);
+                PieceType nextPieceType;
+                if (lastPiece.transform.position.y > yTopBound)
+                {
+                    nextPieceType = lastPiece.GetComponent<GeneratorPieceData>().pieceType == PieceType.SlopeUp ? PieceType.Platform : PieceType.SlopeDown;
+                }
+                else if (lastPiece.transform.position.y < yBottomBound)
+                {
+                    nextPieceType = lastPiece.GetComponent<GeneratorPieceData>().pieceType == PieceType.SlopeDown ? PieceType.Platform : PieceType.SlopeUp;
+                }
+                else
+                {
+                    nextPieceType = GeneratorPieceData.GetNextPieceType(lastPiece.GetComponent<GeneratorPieceData>().pieceType);
+                }
 
                 List<GameObject> possibleNextPieces = prefabs.Where((e) => e.GetComponent<GeneratorPieceData>().pieceType == nextPieceType).ToList();
 
-                GameObject nextPiece = possibleNextPieces[Random.Range(0,possibleNextPieces.Count)];
+                GameObject nextPiece = possibleNextPieces[Random.Range(0, possibleNextPieces.Count)];
 
                 Vector2 lastPieceEndPlatformOffset = lastPiece.GetComponent<PolygonCollider2D>().points[lastPiece.GetComponent<GeneratorPieceData>().colliderPlatformEndPointIndex];
                 Vector2 nextPieceStartPlatformOffset = nextPiece.GetComponent<PolygonCollider2D>().points[nextPiece.GetComponent<GeneratorPieceData>().colliderPlatformStartPointIndex];
@@ -52,7 +65,7 @@ public class MapGenerator : MonoBehaviour
                 Vector2 offsetsDiff = lastPieceEndPlatformOffset * lastPiece.transform.localScale - nextPieceStartPlatformOffset * nextPiece.transform.localScale;
 
                 Vector3 nextPosition = lastPiece.transform.position + new Vector3(offsetsDiff.x, offsetsDiff.y);
-                if(nextPosition.y > yBottomBound && nextPosition.y < yTopBound || failCount > 100)
+                if (nextPosition.y > yBottomBound && nextPosition.y < yTopBound || failCount > maxFailCount)
                 {
                     generatedPieces.Add(Instantiate(nextPiece, nextPosition, Quaternion.identity, transform));
                     failCount = 0;
@@ -79,7 +92,7 @@ public class MapGenerator : MonoBehaviour
     {
         for (int i = 0; i < generatedPieces.Count;)
         {
-            if(generatedPieces[i].transform.position.x < transform.position.x + xBoundOffset)
+            if (generatedPieces[i].transform.position.x < transform.position.x + xBoundOffset)
             {
                 GameObject gameObject = generatedPieces[i];
                 generatedPieces.Remove(gameObject);
