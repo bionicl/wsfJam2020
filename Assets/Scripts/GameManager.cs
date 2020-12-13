@@ -63,7 +63,6 @@ public class GameManager : MonoBehaviour
             points += newPoints;
             ui.pointsText.text = Mathf.FloorToInt(points).ToString();
         }
-        Debug.Log(level);
         if (level <= 0.05) {
             GameOver();
         }
@@ -121,6 +120,7 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         ui.gameOver.gameObject.SetActive(true);
         ui.gameoverScoreText.text = Mathf.FloorToInt(points).ToString();
+        Destroy(PlayerScripts.Player.instance.gameObject);
     }
 
     // DEBUG

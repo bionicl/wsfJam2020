@@ -6,6 +6,8 @@ namespace PlayerScripts
 {
     public class Player : MonoBehaviour
     {
+        public static Player instance;
+
         public Animator animator;
         public ProjectileShooter discShooter;
         public GroundCheck groundCheck;
@@ -23,6 +25,10 @@ namespace PlayerScripts
         public float jumpForce = 30f;
         const float jumpDelay = .05f;
         float timeSinceJump;
+
+        private void Awake() {
+            instance = this;
+        }
 
         void Start()
         {
