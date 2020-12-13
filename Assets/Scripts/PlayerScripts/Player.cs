@@ -131,6 +131,7 @@ namespace PlayerScripts
         {
             invulnerability = true; //switch off box collider2D
             AudioManager.instance.Play( "Damage" );
+            cam.GetComponent<CameraShake>().TriggerShake();
             
             //start coroutine to switch on and off character graphic
             StartCoroutine(PlayerOffAndOn());

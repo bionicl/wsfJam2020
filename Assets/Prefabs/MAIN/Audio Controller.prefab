@@ -70,7 +70,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Jump
-    clip: {fileID: 8300000, guid: e8bcbd7fad78eaa4e9e5a51755e89795, type: 3}
+    clip: {fileID: 8300000, guid: fbbf413057bd54159aafd8f462c1181b, type: 3}
     volume: 1
     pitch: 1
     loop: 0
