@@ -14,18 +14,19 @@ namespace PlayerScripts
             timeSinceLastShot += Time.deltaTime;
         }
 
-        public void TryShootOnce( Vector2 direction )
+        public bool TryShootOnce( Vector2 direction )
         {
             if (timeSinceLastShot < 1 / maxShotsPerSecond)
-                return;
+                return false;
 
             if (!GameManager.instance.RemoveVinyl())
-                return;
+                return false;
 
             GameObject projectile = Instantiate( projectilePrefab, transform );
             projectile.GetComponent<Projectile>().Init( direction );
 
             timeSinceLastShot = 0;
+            return true;
         }
     }
 }
