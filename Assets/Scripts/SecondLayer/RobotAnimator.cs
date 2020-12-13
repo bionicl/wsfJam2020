@@ -7,7 +7,9 @@ namespace SecondLayer
     public class RobotAnimator : MonoBehaviour
     {
         public RythmObject headBob;
-        
+        public ParticleSystem particles;
+        public ParticleSystem particlesLove;
+
         [Header("Changeable sprites")]
         public Sprite corpoHead;
         public Sprite corpoTorso;
@@ -49,12 +51,14 @@ namespace SecondLayer
             {
                 head.sprite = funkyHappyHead;
                 animator.enabled = false;
+                particlesLove.Play();
                 headBob.enabled = true;
             }
             else
             {
                 head.sprite = corpoAngryHead;
                 animator.SetBool( "angry", true );
+                //particles.Play();
             }
         }
     }
