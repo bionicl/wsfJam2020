@@ -688,7 +688,7 @@ PrefabInstance:
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: e8bcbd7fad78eaa4e9e5a51755e89795, type: 3}
+      objectReference: {fileID: 8300000, guid: 25ff36cab0309b44c947442a8399f978, type: 3}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[4].name
       value: Jump
@@ -696,7 +696,7 @@ PrefabInstance:
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[5].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 4ef49519d8b24344a8b6b8bdf20bfd0c, type: 3}
+      objectReference: {fileID: 8300000, guid: 4cb0beba5804845568aacc075470b919, type: 3}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[5].name
       value: Pickup
@@ -715,11 +715,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[4].pitch
-      value: 1
+      value: 1.48
       objectReference: {fileID: 0}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[5].pitch
-      value: 1.5
+      value: 1.35
       objectReference: {fileID: 0}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[6].pitch
@@ -731,11 +731,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[4].volume
-      value: 1
+      value: 0.603
       objectReference: {fileID: 0}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[5].volume
-      value: 0.5
+      value: 0.182
       objectReference: {fileID: 0}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[6].volume
