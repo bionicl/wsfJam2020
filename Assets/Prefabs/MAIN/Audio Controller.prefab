@@ -63,6 +63,30 @@ MonoBehaviour:
     pitch: 3
     loop: 0
     source: {fileID: 0}
+  - name: RobotHit
+    clip: {fileID: 8300000, guid: 4aeed622f6d8d45478ab6a33dd0eed78, type: 3}
+    volume: 1
+    pitch: 2
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: fbbf413057bd54159aafd8f462c1181b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pickup
+    clip: {fileID: 8300000, guid: 4ef49519d8b24344a8b6b8bdf20bfd0c, type: 3}
+    volume: 0.5
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Damage
+    clip: {fileID: 8300000, guid: 25ff36cab0309b44c947442a8399f978, type: 3}
+    volume: 1
+    pitch: 0.7
+    loop: 0
+    source: {fileID: 0}
   mixerGroup: {fileID: 24300002, guid: 233ace64439f9914890cb870dd67b916, type: 2}
 --- !u!114 &159342235476137894
 MonoBehaviour:
@@ -77,4 +101,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bpm: 128
-  delay: -0.05
+  delay: 0.45

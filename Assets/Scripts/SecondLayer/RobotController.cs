@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Audio;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -29,6 +30,7 @@ namespace SecondLayer
         void OnHit()
         {
             robotAnimation.Hit();
+            AudioManager.instance.Play( "RobotHit" );
         }
 
         void ComeOut()

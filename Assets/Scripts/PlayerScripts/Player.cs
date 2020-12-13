@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Audio;
 using UnityEngine;
 
 namespace PlayerScripts
@@ -51,6 +52,7 @@ namespace PlayerScripts
             if( IsGrounded() && Input.GetKey( KeyCode.Space ) && timeSinceJump > jumpDelay && _rigidBody2D.velocity.y <= 0 )
             {
                 _rigidBody2D.AddForce( Vector2.up * jumpForce, ForceMode2D.Impulse );
+                AudioManager.instance.Play( "Jump" );
                 timeSinceJump = 0;
             }
             
@@ -108,6 +110,7 @@ namespace PlayerScripts
             // Pick up vinyls
             if( other.CompareTag( "vinyl pickup" ) && GameManager.instance.AddVinyl() )
             {
+                AudioManager.instance.Play( "Pickup" );
                 Destroy( other.gameObject );
             }
         }
@@ -117,13 +120,19 @@ namespace PlayerScripts
             if( Input.GetKeyDown( KeyCode.Mouse0 ) )
             {
                 Vector2 shootDir = ( Input.mousePosition - cam.WorldToScreenPoint( transform.position ) ).normalized;
-                discShooter.TryShootOnce( shootDir );
+                if( discShooter.TryShootOnce( shootDir ) )
+                {
+                    AudioManager.instance.Play( "Throw" );
+                }
             }
         }
 
         public void PlayerInvulnerability()
         {
             invulnerability = true; //switch off box collider2D
+            AudioManager.instance.Play( "Damage" );
+            cam.GetComponent<CameraShake>().TriggerShake();
+            
             //start coroutine to switch on and off character graphic
             StartCoroutine(PlayerOffAndOn());
 
