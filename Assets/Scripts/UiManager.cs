@@ -40,7 +40,7 @@ public class UiManager : MonoBehaviour
     private void Update() {
         slider.value = GameManager.instance.level;
         //slider.targetGraphic.color = Color.Lerp(badColor, goodColor, slider.value);
-        sliderAnimator.SetFloat("SliderValue", GameManager.instance.level);
+        //sliderAnimator.SetFloat("SliderValue", GameManager.instance.level);
     }
 
     public void AddVinyl() {

@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update() {
-        Debug.Log(gameStartTime);
         if (!_gameStarted && Input.GetKeyDown(KeyCode.Space)) {
             StartGame();
         }
@@ -64,8 +63,8 @@ public class GameManager : MonoBehaviour
             points += newPoints;
             ui.pointsText.text = Mathf.FloorToInt(points).ToString();
         }
-
-        if (level <= 0) {
+        Debug.Log(level);
+        if (level <= 0.05) {
             GameOver();
         }
 
