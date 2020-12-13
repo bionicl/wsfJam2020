@@ -453,6 +453,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3304735757172797406, guid: 2718024f675454f2b99f5d235999a49b, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4561506511972005211, guid: 2718024f675454f2b99f5d235999a49b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5561,6 +5565,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5153021226727569104, guid: 3f64f571b17e79a40afcd98594d2639b, type: 3}
+      propertyPath: yTopBound
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 5153021226727569134, guid: 3f64f571b17e79a40afcd98594d2639b, type: 3}
       propertyPath: m_Name
       value: MapGenerator
