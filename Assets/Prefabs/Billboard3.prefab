@@ -175,7 +175,6 @@ GameObject:
   - component: {fileID: 4682975392242079728}
   - component: {fileID: 4682975392242079730}
   - component: {fileID: 4682975392242079731}
-  - component: {fileID: 5173926734543228406}
   m_Layer: 9
   m_Name: Billboard3
   m_TagString: Untagged
@@ -249,18 +248,6 @@ MonoBehaviour:
   colliderPlatformStartPointIndex: 0
   colliderPlatformEndPointIndex: 3
   vinylPickUpSpawnPosition: {fileID: 4950361347559450155}
---- !u!114 &5173926734543228406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4682975392242079740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f04febaed393df44c825054907bc09b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4950361347559450155
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +371,7 @@ GameObject:
   - component: {fileID: 6259168300045986453}
   - component: {fileID: 3881882011971481014}
   - component: {fileID: 7969286745625654174}
+  - component: {fileID: 8453236744677718141}
   m_Layer: 0
   m_Name: sign-nofun
   m_TagString: Untagged
@@ -469,7 +457,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2155273, y: -0.07982445}
+  m_Offset: {x: 0.2155273, y: -0.23210526}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -480,8 +468,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.1387944, y: 2.1553564}
+  m_Size: {x: 3.1387944, y: 2.459918}
   m_EdgeRadius: 0
+--- !u!114 &8453236744677718141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528495897979572306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04febaed393df44c825054907bc09b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8154122749559367449
 GameObject:
   m_ObjectHideFlags: 0
