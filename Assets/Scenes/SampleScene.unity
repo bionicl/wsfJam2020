@@ -364,7 +364,7 @@ MonoBehaviour:
   - 0.8
   - 0.6
   - 0
-  levelDecreaseSpeed: 0.02
+  levelDecreaseSpeed: 0.018
   gameOver: 0
 --- !u!20 &519420031
 Camera:
@@ -629,7 +629,7 @@ PrefabInstance:
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[5].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 4cb0beba5804845568aacc075470b919, type: 3}
+      objectReference: {fileID: 8300000, guid: 4aeed622f6d8d45478ab6a33dd0eed78, type: 3}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[5].name
       value: Pickup
@@ -652,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[5].pitch
-      value: 1.35
+      value: 2.38
       objectReference: {fileID: 0}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[6].pitch
@@ -668,7 +668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[5].volume
-      value: 0.182
+      value: 0.571
       objectReference: {fileID: 0}
     - target: {fileID: 4985383788501269558, guid: ab1af45f4663446f088a3b4b4718e768, type: 3}
       propertyPath: sounds.Array.data[6].volume
