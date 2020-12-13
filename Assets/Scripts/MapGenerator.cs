@@ -52,7 +52,8 @@ public class MapGenerator : MonoBehaviour
             }
             else
             {
-                nextPieceType = GeneratorPieceData.GetNextPieceType(lastPiece.GetComponent<GeneratorPieceData>().pieceType, GameManager.instance.Multiplayer / 4.0f + 0.75f);
+                float multiplier = Time.timeSinceLevelLoad - GameManager.instance.gameStartTime < 30 ? 0 : GameManager.instance.Multiplayer / 4.0f;
+                nextPieceType = GeneratorPieceData.GetNextPieceType(lastPiece.GetComponent<GeneratorPieceData>().pieceType, multiplier);
             }
 
             List<GameObject> possibleNextPieces = prefabs.Where((e) => e.GetComponent<GeneratorPieceData>().pieceType == nextPieceType).ToList();

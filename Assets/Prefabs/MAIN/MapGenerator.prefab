@@ -53,6 +53,9 @@ MonoBehaviour:
   - {fileID: 4682975392242079740, guid: beec6c772baced2439e8c959d9889048, type: 3}
   - {fileID: 4682975392242079740, guid: 0c9acc114e1115e42bcde3a767082489, type: 3}
   - {fileID: 4682975392242079740, guid: 4e735f3d07a5cd445b409ac24c9fbd93, type: 3}
+  - {fileID: 7930343806887575812, guid: ee1f789f71c27ba43ab35390b04f4048, type: 3}
+  - {fileID: 7930343806887575812, guid: 29dc484f330aa4341ac905762a24bfb3, type: 3}
+  - {fileID: 7930343806887575812, guid: 4e1fa4b1a393ad343b0e846506b4334d, type: 3}
   speed: 15
   xBoundOffset: -100
   yTopBound: 0
