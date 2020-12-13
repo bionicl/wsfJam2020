@@ -58,7 +58,7 @@ MonoBehaviour:
   - {fileID: 7930343806887575812, guid: 4e1fa4b1a393ad343b0e846506b4334d, type: 3}
   speed: 15
   xBoundOffset: -100
-  yTopBound: 0
+  yTopBound: -0.5
   yBottomBound: -8
   maxFailCount: 1000
   timeToNextVinyl: 5
