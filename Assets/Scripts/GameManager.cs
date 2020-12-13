@@ -63,8 +63,8 @@ public class GameManager : MonoBehaviour
             points += newPoints;
             ui.pointsText.text = Mathf.FloorToInt(points).ToString();
         }
-
-        if (level <= 0) {
+        Debug.Log(level);
+        if (level <= 0.05) {
             GameOver();
         }
 
