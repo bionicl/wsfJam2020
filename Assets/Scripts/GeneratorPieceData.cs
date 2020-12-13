@@ -29,7 +29,7 @@ public class GeneratorPieceData : MonoBehaviour
         { PieceType.Ceiling, new float[] {0.60f, 0.05f, 0.05f, 0.00f, 0.10f, 0.00f, 0.20f}},
     };
 
-    public static List<int> obstaclesIndexes = new List<int>() { 3 };
+    public static List<int> obstaclesIndexes = new List<int>() { 1, 2 };
 
     public static PieceType GetNextPieceType(PieceType lastPieceType, float difficultyMultiplier = 1)
     {

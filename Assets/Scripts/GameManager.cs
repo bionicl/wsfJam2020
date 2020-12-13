@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update() {
+        Debug.Log(gameStartTime);
         if (!_gameStarted && Input.GetKeyDown(KeyCode.Space)) {
             StartGame();
         }
