@@ -368,7 +368,7 @@ MonoBehaviour:
   - 0.8
   - 0.6
   - 0
-  levelDecreaseSpeed: 0.002
+  levelDecreaseSpeed: 0.02
   gameOver: 0
 --- !u!20 &519420031
 Camera:
